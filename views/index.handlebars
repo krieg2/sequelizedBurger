@@ -1,0 +1,64 @@
+
+<div class="container">
+  <div class="row">
+    <div class="col-12 text-center">
+      <img id="logo" src="/assets/img/hamburger-food-meal-tasty-47725.jpeg">
+      <h1>Eat-A-Burger!</h1>
+    </div>
+  </div>
+
+  <div class="row">
+
+    <div class="col-2">
+    </div>
+    <!-- Uneaten burgers column -->
+    <div class="col text-center mr-4">
+      <div class="row">
+      {{#each burgers}}
+        {{#unless devoured}}
+          <div class="col-8 uneaten mb-2" data-id="{{id}}">
+              {{id}}. {{burger_name}}
+          </div>
+          <div class="col-4 my-auto">
+            <button type="button" class="btn btn-light btn-sm eat" data-id="{{id}}">Devour it!</button>
+          </div>
+        {{/unless}}
+      {{/each}}
+      </div>
+    </div>
+    <div class="col-1">
+    </div>    
+    <!-- Eaten burgers column -->
+    <div class="col text-left ml-4">
+      <div class="row">
+      {{#each burgers}}
+        {{#if devoured}}
+        <div class="col-10 eaten mb-2" data-id="{{id}}">
+            {{id}}. {{burger_name}}
+        </div>
+        <div class="col-2">
+        </div>
+        {{/if}}
+      {{/each}}
+      </div>
+    </div>
+
+    <div class="col-2">
+    </div>
+    <div class="w-100"></div>
+    <!-- Creates a new line -->
+  </div>
+
+  <br>
+  <div class="row">
+    <div class="col-12 text-center">
+      <form class="create-form">
+        <div class="form-group">
+          <textarea cols="50" type="text" id="name" name="name" placeholder="Burger description..."></textarea>
+        </div>
+        <button class="btn btn-secondary btn-md mx-auto" type="submit" id="submit">Submit</button>
+        <p class="mt-2">Enter a burger you want to eat and click the "Submit" button.</p>
+      </form>
+    </div>
+  </div>
+</div>
