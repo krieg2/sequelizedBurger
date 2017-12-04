@@ -7,7 +7,7 @@ module.exports = function(app){
   // Regex to suport "/index" or "/"
   app.get(/\/(index)?/, function(req, res){
   	// Query all burgers and display.
-    db.Burger.findAll({}).then(function(result){
+    db.Burger.findAll({order: db.sequelize.col('id')}).then(function(result){
       var resultObject = {
         burgers: result
       };

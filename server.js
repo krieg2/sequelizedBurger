@@ -16,8 +16,6 @@ app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 app.engine("handlebars", handleBars({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
-//const routes = require("./controllers/burgers_controller.js");
-//app.use("/", routes);
 require("./routes/api-routes.js")(app);
 
 db.sequelize.sync().then(function(){
