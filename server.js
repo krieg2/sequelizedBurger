@@ -4,6 +4,7 @@ const methodOverride = require("method-override");
 const handleBars = require("express-handlebars");
 const app = express();
 const PORT = process.env.PORT || 3000;
+const db = require("./models");
 
 app.use(express.static("public"));
 
@@ -15,10 +16,12 @@ app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 app.engine("handlebars", handleBars({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
-const routes = require("./controllers/burgers_controller.js");
+//const routes = require("./controllers/burgers_controller.js");
+//app.use("/", routes);
+require("./routes/api-routes.js")(app);
 
-app.use("/", routes);
-
-app.listen(PORT, () => {
-  console.log("Listening on PORT " + PORT);
+db.sequelize.sync().then(function(){
+    app.listen(PORT, () => {
+      console.log("Listening on PORT " + PORT);
+    });
 });
