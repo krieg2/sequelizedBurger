@@ -14,10 +14,7 @@
     "dialect": "mysql"
   },
   "production": {
-    "username": "zyurve8k48fro5p7",
-    "password": "bszfplrphl9o38b8",
-    "database": "sequelburger_db",
-    "host": "ik3xio06abqa902qt.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
+    "use_env_variable": "JAWSDB_URL",
     "dialect": "mysql"
   }
 }
