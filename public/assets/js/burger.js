@@ -4,15 +4,15 @@ $(document).ready(function() {
     // of a single burger by id.
     $(".eat").on("click", function(event){
 
-        var id = $(this).data("id");
-
+        var idObj = {
+          id: $(this).data("id")
+        };
         $.ajax({
           method: "PUT",
-          url: "/api/burger/" + id,
-          data: {},
-          dataType: "json"
-        }).done(function(){
-            window.location.assign("/")
+          url: "/api/burger",
+          data: idObj
+        }).success(function(data) {
+          window.location.assign("/");
         });
 
 	});
@@ -35,11 +35,9 @@ $(document).ready(function() {
 
             $.ajax({
               method: "POST",
-              url: "/api/newburger/",
+              url: "/api/newburger",
               data: newBurger,
-              dataType: "json"
-            }).done(function(){
-                window.location.assign("/")
+              dataType: "html"
             });
         }
     });
