@@ -16,7 +16,8 @@ app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 app.engine("handlebars", handleBars({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
-require("./routes/api-routes.js")(app);
+const routes = require("./routes/api-routes.js");
+app.use("/", routes);
 
 db.sequelize.sync().then(function(){
     app.listen(PORT, () => {
