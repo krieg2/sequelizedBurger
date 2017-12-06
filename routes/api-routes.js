@@ -20,7 +20,9 @@ module.exports = function(app){
   	// Create a new burger record.
     db.Burger.create({
       burger_name: req.body.name
-    }).then(function(result) {
+    }, {
+      fields: [ 'burger_name' ]
+    }).then(function(result){
       res.json({ id: result.insertId });
     });
   });
@@ -36,7 +38,7 @@ module.exports = function(app){
         id: req.params.id
       }
     })
-    .then(function(result) {
+    .then(function(result){
       res.status(200).end();
     });
 
