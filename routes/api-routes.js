@@ -18,12 +18,13 @@ module.exports = function(app){
   // POST route for new burgers.
   app.post("/api/newburger", function(req, res){
   	// Create a new burger record.
+    console.log("received: "+req.body.name);
     db.Burger.create({
       burger_name: req.body.name
     }, {
       fields: [ 'burger_name' ]
     }).then(function(result){
-      res.json({ id: result.insertId });
+      res.end();
     });
   });
 
@@ -34,12 +35,13 @@ module.exports = function(app){
     db.Burger.update({
       devoured: state
     }, {
+      fields: [ 'devoured' ],
       where: {
         id: req.params.id
       }
     })
     .then(function(result){
-      res.status(200).end();
+      res.end();
     });
 
   });

@@ -1,4 +1,4 @@
-$(function(){
+$(document).ready(function() {
 
     // The "devour" button changes the status
     // of a single burger by id.
@@ -6,12 +6,13 @@ $(function(){
 
         var id = $(this).data("id");
 
-		$.ajax("/api/burger/" + id, {
-	      type: "PUT"
-	    }).then(function(){
-	        location.reload();
-	      }
-	    );
+        $.ajax({
+          method: "PUT",
+          url: "/api/burger/" + id
+        }).done(function(){
+            window.location.assign("/")
+        });
+
 	});
 
     // Submit button creates a new burger and sends it
@@ -19,6 +20,7 @@ $(function(){
     $("#submit").on("click", function(event){
 
         var burgerName = $("#name").val().trim();
+        console.log("here is the name: "+burgerName);
 
         if(burgerName === ""){
 
@@ -28,13 +30,14 @@ $(function(){
             var newBurger = {
                 name: burgerName
             };
-            $.ajax("/api/newburger/", {
-              type: "POST",
+
+            $.ajax({
+              method: "POST",
+              url: "/api/newburger/",
               data: newBurger
-            }).then(function(){
-                location.reload();
-              }
-            );
+            }).done(function(){
+                window.location.assign("/")
+            });
         }
     });
 });
