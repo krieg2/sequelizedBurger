@@ -8,7 +8,9 @@ $(document).ready(function() {
 
         $.ajax({
           method: "PUT",
-          url: "/api/burger/" + id
+          url: "/api/burger/" + id,
+          data: {},
+          dataType: "json"
         }).done(function(){
             window.location.assign("/")
         });
@@ -34,7 +36,8 @@ $(document).ready(function() {
             $.ajax({
               method: "POST",
               url: "/api/newburger/",
-              data: newBurger
+              data: newBurger,
+              dataType: "json"
             }).done(function(){
                 window.location.assign("/")
             });

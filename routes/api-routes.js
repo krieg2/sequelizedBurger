@@ -24,7 +24,7 @@ module.exports = function(app){
     }, {
       fields: [ 'burger_name' ]
     }).then(function(result){
-      res.end();
+      res.json({ id: result.insertId });
     });
   });
 
@@ -41,7 +41,7 @@ module.exports = function(app){
       }
     })
     .then(function(result){
-      res.end();
+      res.json({ id: result.insertId });
     });
 
   });
